@@ -2,7 +2,7 @@ version: '2'
 services:
   reporter1:
     command: "/bin/bash -c /home/node/app/reporter/run.sh"
-    build: 
+    build:
       context: .
     image: "reporter:v1"
     container_name: reporter1
@@ -10,7 +10,7 @@ services:
       - /storagepool/ibc/env-commands:/env-commands
   reporter2:
     command: "/bin/bash -c /home/node/app/reporter/run.sh"
-    build: 
+    build:
       context: .
     image: "reporter:v1"
     container_name: reporter2
@@ -18,7 +18,7 @@ services:
       - /storagepool/ibc/env-commands2:/env-commands
   reporter3:
     command: "/bin/bash -c /home/node/app/reporter/run.sh"
-    build: 
+    build:
       context: .
     image: "reporter:v1"
     container_name: reporter3
@@ -26,7 +26,7 @@ services:
       - /storagepool/ibc/env-commands3:/env-commands
   reporter4:
     command: "/bin/bash -c /home/node/app/reporter/run.sh"
-    build: 
+    build:
       context: .
     image: "reporter:v1"
     container_name: reporter4
@@ -34,9 +34,34 @@ services:
       - /storagepool/ibc/env-commands4:/env-commands
   reporter5:
     command: "/bin/bash -c /home/node/app/reporter/run.sh"
-    build: 
+    build:
       context: .
     image: "reporter:v1"
     container_name: reporter5
     volumes:
       - /storagepool/ibc/env-commands5:/env-commands
+
+  test-reporter1:
+    command: "/bin/bash -c /home/node/app/reporter/run.sh"
+    build:
+      context: .
+    image: "reporter:v1"
+    container_name: test-reporter1
+    volumes:
+      - /storagepool/ibc-test/env-commands1:/env-commands
+  test-reporter2:
+    command: "/bin/bash -c /home/node/app/reporter/run.sh"
+    build:
+      context: .
+    image: "reporter:v1"
+    container_name: test-reporter2
+    volumes:
+      - /storagepool/ibc-test/env-commands2:/env-commands
+  test-reporter3:
+    command: "/bin/bash -c /home/node/app/reporter/run.sh"
+    build:
+      context: .
+    image: "reporter:v1"
+    container_name: test-reporter3
+    volumes:
+      - /storagepool/ibc-test/env-commands3:/env-commands
