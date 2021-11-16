@@ -2,7 +2,7 @@ import { JsonRpc } from "eosjs";
 import fetch from "node-fetch";
 import { NetworkName } from "../types";
 import { getEnvConfig } from "../dotenv";
-import { isProduction, unmapNetworkName } from "../utils";
+import { unmapNetworkName } from "../utils";
 
 export const getContractsForNetwork = (
   network: NetworkName
@@ -18,14 +18,14 @@ export const getContractsForNetwork = (
   switch (network) {
     case `eostest`:
       return {
-        ibc: `tlosd.eos.io`,
-        cpuPayer: `telosdcpunet`,
+        ibc: `telosd.xc`,
+        cpuPayer: `admin.start`,
         ...((envConfig.eostest || {}) as any),
       };
     case `telostest`:
       return {
         ibc: `telosd.io`,
-        cpuPayer: `admin.swaps`,
+        cpuPayer: `admin.start`,
         ...((envConfig.telostest || {}) as any),
       };
     case `eos`:
@@ -73,8 +73,8 @@ const createNetwork = (nodeEndpoint, chainId) => {
 };
 
 const EosTestNetwork = createNetwork(
-  process.env.EOSTEST_ENDPOINT || `https://testnet.telos.africa:443`,
-  `1eaa0824707c8c16bd25145493bf062aecddfeb56c736f6ba6397f3195f33c9f`
+  process.env.EOSTEST_ENDPOINT || `https://jungle3.cryptolions.io:443`,
+  `2a02a0053e5a8cf73a56ba0fda11e4d92e0238a4a2aa74fccf46d5a910746840`
 );
 const TelosTestNetwork = createNetwork(
   process.env.TELOSTEST_ENDPOINT || `https://testnet.telos.africa:443`,
